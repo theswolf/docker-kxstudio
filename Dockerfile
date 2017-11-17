@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y lmms-vst-full:i386 lmms cadence kxstudi
 
 
 RUN useradd -ms /bin/bash developer
+RUN addgroup developer audio
 RUN echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER developer
 WORKDIR /home/developer
