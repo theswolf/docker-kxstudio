@@ -18,8 +18,16 @@ kxstudio-meta-wine kxstudio-meta-audio kxstudio-meta-audio-plugins kxstudio-meta
 
 
 #reinstall wine from ubuntu repository
-RUN apt-get update && apt-get install -y wine:i386 \
- && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y wine:i386 \
+ #&& rm -rf /var/lib/apt/lists/*
+
+#new wine 3.0
+RUN wget -nc https://dl.winehq.org/wine-builds/Release.key
+RUN apt-key add Release.key
+RUN apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+
+RUN apt-get update &&  apt-get install --install-recommends winehq-stable:i386
+#-new wine 3.0
 
 ENV WINEARCH=win32
 
