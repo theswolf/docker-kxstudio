@@ -31,6 +31,11 @@ RUN apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
 
 RUN apt-get update &&  apt-get install -y --install-recommends winehq-stable:i386
 #-new wine 3.0
+RUN wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+RUN chmod +x winetricks 
+RUN apt-get install -y zenity
+
+RUN rm -rf /var/lib/apt/lists/* 
 
 ENV WINEARCH=win32
 
